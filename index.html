@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            width: 100%;
+            height: 100vh;
+        }
+
+        main>div {
+            width: 100%;
+            width: 100%;
+
+        }
+
+        #part1 {
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.427);
+        }
+
+        #part1>h1 {
+            font-size: 30px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: uppercase;
+            color: rgb(107, 208, 134);
+
+        }
+
+        #part2 {
+            height: 15%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0 5%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #part2>button {
+            width: 7%;
+            height: 70%;
+            border: 1px solid rgb(107, 208, 134);
+            border-radius: 10px;
+            color: rgb(107, 208, 134);
+            box-shadow: 0px 5px 10px rgb(107, 208, 134);
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: capitalize;
+            font-weight: bold;
+
+        }
+
+        #part3 {
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #part3>input {
+            width: 80%;
+            height: 80%;
+            border: 2px solid rgb(107, 208, 134);
+            box-shadow: 0px 5px 10px rgb(107, 208, 134);
+
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .lowercase {
+            text-transform: lowercase;
+        }
+
+        .capitalize {
+            text-transform: capitalize;
+        }
+
+        @media screen and (max-width:576px) {
+            #part2>button {
+                font-size: 6px !important;
+            }
+        }
+
+        @media screen and (max-width:768px) and (min-width:577px) {
+            #part2>button {
+                font-size: 7px !important;
+            }
+        }
+
+        @media screen and (max-width:992px) and (min-width:769px) {
+            #part2>button {
+                font-size: 10px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="part1">
+            <h1>golnaz text editor</h1>
+        </div>
+        <div id="part2">
+            <button onclick="para('b')">bold</button>
+            <button onclick="para('i')">italic</button>
+            <button onclick="para('l')">left</button>
+            <button onclick="para('m')">middle</button>
+            <button onclick="para('r')">right</button>
+            <button onclick="para('up')">uppercase</button>
+            <button onclick="para('lo')">lowercase</button>
+            <button onclick="para('ca')">capitalize</button>
+            <button onclick="para()">clear text</button>
+
+        </div>
+        <div id="part3">
+            <input id="txt" type="text" placeholder="please enter your text ...">
+        </div>
+    </main>
+    <script>
+
+        function para(x) {
+            let _text = document.getElementById("txt");
+            switch (x) {
+                case "b": _text.classList.toggle("bold"); break;
+                case "i": _text.classList.toggle("italic"); break;
+                case "l":
+                    _text.classList.remove("center", "right");
+                    _text.classList.toggle("left");
+                    break;
+                case "m":
+                    _text.classList.remove("left", "right");
+                    _text.classList.toggle("center"); break;
+                case "r":
+                    _text.classList.remove("left", "center");
+                    _text.classList.toggle("right"); break;
+                case "up":
+                    _text.classList.remove("capitalize", "lowercase");
+                    _text.classList.toggle("uppercase"); break;
+                case "lo":
+                    _text.classList.remove("capitalize", "uppercase");
+                    _text.classList.toggle("lowercase"); break;
+                case "ca":
+                    _text.classList.remove("uppercase", "lowercase");
+                    _text.classList.toggle("capitalize"); break;
+                default: _text.value = "";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
